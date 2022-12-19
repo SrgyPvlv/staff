@@ -29,4 +29,14 @@ public class CarModelEntity {
 	
 	@OneToMany(mappedBy="carmodel",fetch=FetchType.LAZY,orphanRemoval=false)
 	private List<CarEntity> cars=new ArrayList<>();
+	
+	public void addCarEntity(CarEntity carEntity) {
+		cars.add(carEntity);
+		carEntity.setCarmodel(this);
+	}
+	
+	public void removeCarEntity(CarEntity carEntity) {
+		cars.remove(carEntity);
+		carEntity.setCarmodel(null);
+	}
 }

@@ -36,8 +36,12 @@ public class EmployeeEntity {
 	private String employee_comment;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="departments_id")
-	private DepartmentEntity department;
+	@JoinColumn(name="fact_departments_id")
+	private DepartmentEntity fact_department;
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="staff_departments_id")
+	private DepartmentEntity staff_department;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="cars_id")

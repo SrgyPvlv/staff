@@ -18,25 +18,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="positions")
-public class PositionEntity {
+@Table(name="divisions")
+public class DivisionEntity {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	private String position;
+	private String division;
 	
-	@OneToMany(mappedBy="position",fetch=FetchType.EAGER,orphanRemoval=false)
-	private List<EmployeeEntity> employees=new ArrayList<>();
+	@OneToMany(mappedBy="division",fetch=FetchType.EAGER,orphanRemoval=false)
+	private List<DepartmentEntity> departments=new ArrayList<>();
 	
-	public void addEmployeeEntity(EmployeeEntity employeeEntity) {
-		employees.add(employeeEntity);
-		employeeEntity.setPosition(this);
+	public void addDepartmentEntity(DepartmentEntity departmentEntity) {
+		departments.add(departmentEntity);
+		departmentEntity.setDivision(this);
 	}
 	
-	public void removeEmployeeEntity(EmployeeEntity employeeEntity) {
-		employees.remove(employeeEntity);
-		employeeEntity.setPosition(null);
+	public void removeDepartmentEntity(DepartmentEntity departmentEntity) {
+		departments.remove(departmentEntity);
+		departmentEntity.setDivision(null);
 	}
 }

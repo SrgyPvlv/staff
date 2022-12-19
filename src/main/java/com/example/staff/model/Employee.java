@@ -16,7 +16,8 @@ public class Employee {
 	String login;
 	String email;
 	String employee_comment;
-	Long departments_id;
-	Long cars_id;
-	Long positions_id;
+	Long fact_department;
+	Long staff_department;
+	Long car;
+	Long position;
 }
