@@ -3,6 +3,7 @@ package com.example.staff.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class CarModelEntity {
 	
 	private String car_model;
 	
-	@OneToMany(mappedBy="carmodel",fetch=FetchType.LAZY,orphanRemoval=false)
+	@OneToMany(mappedBy="carmodel",cascade=CascadeType.ALL,fetch=FetchType.LAZY,orphanRemoval=false)
 	private List<CarEntity> cars=new ArrayList<>();
 	
 	public void addCarEntity(CarEntity carEntity) {

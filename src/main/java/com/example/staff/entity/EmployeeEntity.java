@@ -2,7 +2,6 @@ package com.example.staff.entity;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,19 +34,19 @@ public class EmployeeEntity {
 	private String email;
 	private String employee_comment;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="fact_departments_id")
 	private DepartmentEntity fact_department;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="staff_departments_id")
 	private DepartmentEntity staff_department;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="cars_id")
 	private CarEntity car;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="positions_id")
 	private PositionEntity position;
 }

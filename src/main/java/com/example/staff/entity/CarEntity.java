@@ -1,6 +1,5 @@
 package com.example.staff.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +27,7 @@ public class CarEntity {
 	private String car_number;
 	private String car_comment;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="carmodels_id")
 	private CarModelEntity carmodel;
 	
