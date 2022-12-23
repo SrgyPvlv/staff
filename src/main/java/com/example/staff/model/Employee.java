@@ -1,10 +1,13 @@
 package com.example.staff.model;
 
 import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import lombok.Value;
-
-@Value
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
 
 	Long id;
@@ -16,8 +19,8 @@ public class Employee {
 	String login;
 	String email;
 	String employee_comment;
-	Long fact_department;
-	Long staff_department;
-	Long car;
-	Long position;
+	Department fact_department;
+	Department staff_department;
+	Car car;
+	Position position;
 }

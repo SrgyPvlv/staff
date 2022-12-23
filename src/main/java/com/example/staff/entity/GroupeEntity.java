@@ -18,25 +18,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="groups")
-public class GroupEntity {
+@Table(name="groupes")
+public class GroupeEntity {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	private String group;
+	private String groupe;
 	
-	@OneToMany(mappedBy="group",fetch=FetchType.EAGER,orphanRemoval=false)
+	@OneToMany(mappedBy="groupe",fetch=FetchType.EAGER,orphanRemoval=false)
 	private List<DepartmentEntity> departments=new ArrayList<>();
 	
 	public void addDepartmentEntity(DepartmentEntity departmentEntity) {
 		departments.add(departmentEntity);
-		departmentEntity.setGroup(this);
+		departmentEntity.setGroupe(this);
 	}
 	
 	public void removeDepartmentEntity(DepartmentEntity departmentEntity) {
 		departments.remove(departmentEntity);
-		departmentEntity.setGroup(null);
+		departmentEntity.setGroupe(null);
 	}
 }

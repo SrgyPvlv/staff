@@ -7,11 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Car {
+public class Department {
 
 	Long id;
-	String car_number;
-	String car_comment;
-	CarModel carmodel;
-	Employee employee;
+	Division division;
+	Groupe groupe;
+	FunctionGroup function_group;
 }

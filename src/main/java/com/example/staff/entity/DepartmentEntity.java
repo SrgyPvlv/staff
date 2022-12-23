@@ -29,7 +29,7 @@ public class DepartmentEntity {
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="group_id")
-	private GroupEntity group;
+	private GroupeEntity groupe;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="function_group_id")
