@@ -10,39 +10,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.staff.entity.dto.EmployeeRequest;
-import com.example.staff.mapper.EmployeeRequestToEmployee;
-import com.example.staff.model.Employee;
-import com.example.staff.service.EmployeeService;
-
+import com.example.staff.entity.EmployeeEntity;
+import com.example.staff.service.EmployeeEntityService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
-public class EmployeeController {
+public class EmployeeEntityController {
 
-	private final EmployeeService employeeService;
-	private final EmployeeRequestToEmployee mapper;
+	private final EmployeeEntityService employeeEntityService;
 	
 	@GetMapping("/employee/{id}")
-	public ResponseEntity<Employee> getEmployeeById(Long id){
+	public ResponseEntity<EmployeeEntity> getEmployeeEntityById(Long id){
 		
-			return new ResponseEntity<>(employeeService.getEmployeeById(id),HttpStatus.OK);
+			return new ResponseEntity<>(employeeEntityService.getEmployeeEntityById(id),HttpStatus.OK);
 	}
 	
 	@GetMapping("/employee")
-	public ResponseEntity<List<Employee>> getAllEmployee(){
+	public ResponseEntity<List<EmployeeEntity>> getAllEmployee(){
 		
 		try {
-		return new ResponseEntity<>(employeeService.getAllEmployee(),HttpStatus.OK);
+		return new ResponseEntity<>(employeeEntityService.getAllEmployeeEntity(),HttpStatus.OK);
 		} catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 	
 	@PostMapping("/employee")
-	public ResponseEntity<HttpStatus> addEmployee(@RequestBody EmployeeRequest employeeRequest){
+	public ResponseEntity<HttpStatus> addEmployeeEntity(@RequestBody EmployeeEntity employeeEntity){
 		try {
-			employeeService.addEmployee(mapper.employeeRequestToEmployee(employeeRequest));
+			employeeEntityService.addEmployeeEntity(employeeEntity);
 			return new ResponseEntity<>(HttpStatus.CREATED);
 		} catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
 	}
