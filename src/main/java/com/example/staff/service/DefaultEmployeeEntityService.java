@@ -30,8 +30,8 @@ public class DefaultEmployeeEntityService implements EmployeeEntityService {
 	}
 
 	@Override
-	public void addEmployeeEntity(EmployeeEntity employee) {
-		employeeRepository.saveAndFlush(employee);
+	public void addEmployeeEntity(EmployeeEntity employeeEntity) {
+		employeeRepository.saveAndFlush(employeeEntity);
 		
 	}
 
