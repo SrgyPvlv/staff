@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.staff.entity.dto.EmployeeRequest;
+import com.example.staff.dto.EmployeeRequest;
 import com.example.staff.mapper.EmployeeRequestToEmployee;
 import com.example.staff.model.Employee;
 import com.example.staff.service.EmployeeService;
