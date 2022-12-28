@@ -33,6 +33,6 @@ public class DepartmentEntity {
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="function_group_id")
-	private FunctionGroupEntity function_group;
+	private FunctionGroupEntity functionGroup;
 	
 }

@@ -2,6 +2,9 @@ package com.example.staff.entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,23 +29,24 @@ public class EmployeeEntity {
 	private Long id;
 	
 	private String name;
-	private String mobile_phone;
+	private String mobilePhone;
 	private LocalDate birthday;
-	private Integer local_phone;
-	private Integer employee_id;
+	private Integer localPhone;
+	private Integer employeeId;
 	private String login;
 	private String email;
-	private String employee_comment;
+	private String employeeComment;
 	
 	@ManyToOne
 	@JoinColumn(name="fact_departments_id")
-	private DepartmentEntity fact_department;
+	private DepartmentEntity factDepartment;
 	
 	@ManyToOne
 	@JoinColumn(name="staff_departments_id")
-	private DepartmentEntity staff_department;
+	private DepartmentEntity staffDepartment;
 	
 	@OneToOne
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	@JoinColumn(name="cars_id")
 	private CarEntity car;
 	

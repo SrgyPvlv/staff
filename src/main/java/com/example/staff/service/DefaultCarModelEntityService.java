@@ -41,7 +41,7 @@ public class DefaultCarModelEntityService implements  CarModelEntityService{
 		CarModelEntity editedCarModelEntity=carModelRepository
 				.findById(id)
 				.orElseThrow(()->new EmployeeNotFoundException("Employee not found: id = " + id));
-		editedCarModelEntity.setCar_model(carModelEntity.getCar_model());
+		editedCarModelEntity.setCarModel(carModelEntity.getCarModel());
 		carModelRepository.saveAndFlush(editedCarModelEntity);
 	}
 

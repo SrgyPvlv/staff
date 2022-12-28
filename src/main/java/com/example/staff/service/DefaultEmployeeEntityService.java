@@ -41,15 +41,15 @@ public class DefaultEmployeeEntityService implements EmployeeEntityService {
 				.findById(id)
 				.orElseThrow(()->new EmployeeNotFoundException("Employee not found: id = " + id));
 		editedEmployeeEntity.setName(employeeEntity.getName());
-		editedEmployeeEntity.setMobile_phone(employeeEntity.getMobile_phone());
+		editedEmployeeEntity.setMobilePhone(employeeEntity.getMobilePhone());
 		editedEmployeeEntity.setBirthday(employeeEntity.getBirthday());
-		editedEmployeeEntity.setLocal_phone(employeeEntity.getLocal_phone());
-		editedEmployeeEntity.setEmployee_id(employeeEntity.getEmployee_id());
+		editedEmployeeEntity.setLocalPhone(employeeEntity.getLocalPhone());
+		editedEmployeeEntity.setEmployeeComment(employeeEntity.getEmployeeComment());
 		editedEmployeeEntity.setLogin(employeeEntity.getLogin());
 		editedEmployeeEntity.setEmail(employeeEntity.getEmail());
-		editedEmployeeEntity.setEmployee_comment(employeeEntity.getEmployee_comment());
-		editedEmployeeEntity.setFact_department(employeeEntity.getFact_department());
-		editedEmployeeEntity.setStaff_department(employeeEntity.getStaff_department());
+		editedEmployeeEntity.setEmployeeComment(employeeEntity.getEmployeeComment());
+		editedEmployeeEntity.setFactDepartment(employeeEntity.getFactDepartment());
+		editedEmployeeEntity.setFactDepartment(employeeEntity.getFactDepartment());
 		editedEmployeeEntity.setCar(employeeEntity.getCar());
 		editedEmployeeEntity.setPosition(employeeEntity.getPosition());
 		

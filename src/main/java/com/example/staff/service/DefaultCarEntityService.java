@@ -41,9 +41,9 @@ public class DefaultCarEntityService implements CarEntityService {
 		CarEntity editedCarEntity=carRepository
 				.findById(id)
 				.orElseThrow(()-> new EmployeeNotFoundException("Employee not found: id = " + id));
-		editedCarEntity.setCar_number(carEntity.getCar_number());
-		editedCarEntity.setCar_comment(carEntity.getCar_comment());
-		editedCarEntity.setCarmodel(carEntity.getCarmodel());
+		editedCarEntity.setCarNumber(carEntity.getCarNumber());
+		editedCarEntity.setCarComment(carEntity.getCarComment());
+		editedCarEntity.setCarModel(carEntity.getCarModel());
 		
 		carRepository.saveAndFlush(editedCarEntity);
 	}

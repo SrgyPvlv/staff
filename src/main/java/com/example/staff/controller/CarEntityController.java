@@ -20,26 +20,26 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/v1/api")
 public class CarEntityController {
 
 	private final CarEntityService carEntityService;
 	
-	@GetMapping("/car/{id}")
+	@GetMapping("/cars/{id}")
 	public ResponseEntity<CarEntity> getCarEntityById(@PathVariable Long id){
 		try {
 			return ResponseEntity.ok(carEntityService.getCarEntityById(id));
 		} catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 	
-	@GetMapping("/car")
+	@GetMapping("/cars")
 	public ResponseEntity<List<CarEntity>> getAllCarEntity(){
 		try {
 			return ResponseEntity.ok(carEntityService.getAllCarEntity());
 		} catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 	
-	@PostMapping("/car")
+	@PostMapping("/cars")
 	public ResponseEntity<HttpStatus> addCarEntity(@RequestBody CarEntity carEntity){
 		try {
 			carEntityService.addCarEntity(carEntity);
@@ -47,7 +47,7 @@ public class CarEntityController {
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
 	}
 	
-	@PutMapping("/car/{id}")
+	@PutMapping("/cars/{id}")
 	public ResponseEntity<HttpStatus> editCarEntity(@PathVariable Long id, @RequestBody CarEntity carEntity){
 		try {
 			carEntityService.editCarEntity(id, carEntity);
@@ -55,7 +55,7 @@ public class CarEntityController {
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);}
 	}
 	
-	@DeleteMapping("/car/{id}")
+	@DeleteMapping("/cars/{id}")
 	public ResponseEntity<HttpStatus> deleteCarEntityById(@PathVariable Long id){
 		try {
 			carEntityService.deleteCarEntityById(id);

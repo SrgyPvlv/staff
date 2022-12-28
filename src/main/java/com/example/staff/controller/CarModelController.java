@@ -20,26 +20,26 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/v1/api")
 public class CarModelController {
 
 	private final CarModelEntityService carModelEntityService;
 	
-	@GetMapping("/carmodel/{id}")
+	@GetMapping("/carmodels/{id}")
 	public ResponseEntity<CarModelEntity> getCarModelEntityById(@PathVariable Long id){
 		try {
 			return new ResponseEntity<>(carModelEntityService.getCarModelEntityById(id), HttpStatus.OK);
 		}catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 	
-	@GetMapping("/carmodel")
+	@GetMapping("/carmodels")
 	public ResponseEntity<List<CarModelEntity>> getAllCarModelEntity(){
 		try {
 			return new ResponseEntity<>(carModelEntityService.getAllCarModelEntity(), HttpStatus.OK);
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 	
-	@PostMapping("/carmodel")
+	@PostMapping("/carmodels")
 	public ResponseEntity<HttpStatus> addCarModelEntity(@RequestBody CarModelEntity carModelEntity){
 		try {
 			carModelEntityService.addCarModelEntity(carModelEntity);
@@ -47,7 +47,7 @@ public class CarModelController {
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
 	}
 	
-	@PutMapping("/carmodel/{id}")
+	@PutMapping("/carmodels/{id}")
 	public ResponseEntity<HttpStatus> editCarModelEntity(@PathVariable Long id, @RequestBody CarModelEntity carModelEntity){
 		try {
 			carModelEntityService.editCarModelEntity(id, carModelEntity);
@@ -55,7 +55,7 @@ public class CarModelController {
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);}
 	}
 	
-	@DeleteMapping("/carmodel/{id}")
+	@DeleteMapping("/carmodels/{id}")
 	public ResponseEntity<HttpStatus> deleteCarModelEntityById(@PathVariable Long id){
 		try {
 			carModelEntityService.deleteCarModelEntityById(id);
