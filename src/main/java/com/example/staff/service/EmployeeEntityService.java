@@ -8,7 +8,7 @@ public interface EmployeeEntityService {
 	
 	EmployeeEntity getEmployeeEntityById(Long id);
 	List<EmployeeEntity> getAllEmployeeEntity();
-	void addEmployeeEntity(EmployeeEntity employeeEntity);
-	void editEmployeeEntity(Long id, EmployeeEntity employeeEntity);
+	EmployeeEntity addEmployeeEntity(EmployeeEntity employeeEntity);
+	EmployeeEntity editEmployeeEntity(Long id, EmployeeEntity employeeEntity);
 	void deleteEmployEntityById(Long id);
 }

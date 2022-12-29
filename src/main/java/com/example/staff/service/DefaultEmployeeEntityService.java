@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.staff.entity.EmployeeEntity;
-import com.example.staff.exception.EmployeeNotFoundException;
+import com.example.staff.exception.ItemNotFoundException;
 import com.example.staff.repository.EmployeeRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class DefaultEmployeeEntityService implements EmployeeEntityService {
 	public EmployeeEntity getEmployeeEntityById(Long id) {	
 		EmployeeEntity employee=employeeRepository
 				.findById(id)
-				.orElseThrow(()->new EmployeeNotFoundException("Employee not found: id = " + id));
+				.orElseThrow(()->new ItemNotFoundException("Employee not found: id = " + id));
 		return employee;
 	}
 
@@ -30,16 +30,16 @@ public class DefaultEmployeeEntityService implements EmployeeEntityService {
 	}
 
 	@Override
-	public void addEmployeeEntity(EmployeeEntity employeeEntity) {
-		employeeRepository.saveAndFlush(employeeEntity);
+	public EmployeeEntity addEmployeeEntity(EmployeeEntity employeeEntity) {
+		return employeeRepository.saveAndFlush(employeeEntity);
 		
 	}
 
 	@Override
-	public void editEmployeeEntity(Long id, EmployeeEntity employeeEntity) {
+	public EmployeeEntity editEmployeeEntity(Long id, EmployeeEntity employeeEntity) {
 		EmployeeEntity editedEmployeeEntity=employeeRepository
 				.findById(id)
-				.orElseThrow(()->new EmployeeNotFoundException("Employee not found: id = " + id));
+				.orElseThrow(()->new ItemNotFoundException("Employee not found: id = " + id));
 		editedEmployeeEntity.setName(employeeEntity.getName());
 		editedEmployeeEntity.setMobilePhone(employeeEntity.getMobilePhone());
 		editedEmployeeEntity.setBirthday(employeeEntity.getBirthday());
@@ -53,7 +53,7 @@ public class DefaultEmployeeEntityService implements EmployeeEntityService {
 		editedEmployeeEntity.setCar(employeeEntity.getCar());
 		editedEmployeeEntity.setPosition(employeeEntity.getPosition());
 		
-		employeeRepository.saveAndFlush(editedEmployeeEntity);
+		return employeeRepository.saveAndFlush(editedEmployeeEntity);
 	}
 
 	@Override

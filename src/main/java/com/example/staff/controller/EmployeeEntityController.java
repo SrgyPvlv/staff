@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 //@CrossOrigin(origins="http://localhost:5173/")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/api")
+@RequestMapping("/api/v1")
 public class EmployeeEntityController {
 
 	private final EmployeeEntityService employeeEntityService;
@@ -41,18 +41,16 @@ public class EmployeeEntityController {
 	}
 	
 	@PostMapping("/employees")
-	public ResponseEntity<HttpStatus> addEmployeeEntity(@RequestBody EmployeeEntity employeeEntity){
+	public ResponseEntity<EmployeeEntity> addEmployeeEntity(@RequestBody EmployeeEntity employeeEntity){
 		try {
-			employeeEntityService.addEmployeeEntity(employeeEntity);
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			return new ResponseEntity<>(employeeEntityService.addEmployeeEntity(employeeEntity),HttpStatus.CREATED);
 		} catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
 	}
 	
 	@PutMapping("/employees/{id}")
-	public ResponseEntity<HttpStatus> editEmployeeEntity(@PathVariable Long id, @RequestBody EmployeeEntity employeeEntity){
+	public ResponseEntity<EmployeeEntity> editEmployeeEntity(@PathVariable Long id, @RequestBody EmployeeEntity employeeEntity){
 		try {
-			employeeEntityService.editEmployeeEntity(id, employeeEntity);
-			return new ResponseEntity<>(HttpStatus.OK);
+			return new ResponseEntity<>(employeeEntityService.editEmployeeEntity(id, employeeEntity),HttpStatus.OK);
 		}catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);}
 	}
 	
@@ -61,6 +59,6 @@ public class EmployeeEntityController {
 		try {
 			employeeEntityService.deleteEmployEntityById(id);
 			return new ResponseEntity<>(HttpStatus.OK);
-		}catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
+		}catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NO_CONTENT);}
 	}
 }

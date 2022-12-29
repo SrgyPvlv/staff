@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/api")
+@RequestMapping("/api/v1")
 public class CarEntityController {
 
 	private final CarEntityService carEntityService;

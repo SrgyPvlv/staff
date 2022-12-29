@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.staff.entity.CarEntity;
-import com.example.staff.exception.EmployeeNotFoundException;
+import com.example.staff.exception.ItemNotFoundException;
 import com.example.staff.repository.CarRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class DefaultCarEntityService implements CarEntityService {
 	public CarEntity getCarEntityById(Long id) {
 		CarEntity carEntity=carRepository
 				.findById(id)
-				.orElseThrow(()-> new EmployeeNotFoundException("Employee not found: id = " + id));
+				.orElseThrow(()-> new ItemNotFoundException("Car not found: id = " + id));
 		return carEntity;
 	}
 
@@ -40,7 +40,7 @@ public class DefaultCarEntityService implements CarEntityService {
 	public void editCarEntity(Long id, CarEntity carEntity) {
 		CarEntity editedCarEntity=carRepository
 				.findById(id)
-				.orElseThrow(()-> new EmployeeNotFoundException("Employee not found: id = " + id));
+				.orElseThrow(()-> new ItemNotFoundException("Car not found: id = " + id));
 		editedCarEntity.setCarNumber(carEntity.getCarNumber());
 		editedCarEntity.setCarComment(carEntity.getCarComment());
 		editedCarEntity.setCarModel(carEntity.getCarModel());

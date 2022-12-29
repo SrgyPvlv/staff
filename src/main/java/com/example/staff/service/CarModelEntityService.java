@@ -8,7 +8,7 @@ public interface CarModelEntityService {
 
 	CarModelEntity getCarModelEntityById(Long id);
 	List<CarModelEntity> getAllCarModelEntity();
-	void addCarModelEntity(CarModelEntity carModelEntity);
-	void editCarModelEntity(Long id, CarModelEntity carModelEntity);
+	CarModelEntity addCarModelEntity(CarModelEntity carModelEntity);
+	CarModelEntity editCarModelEntity(Long id, CarModelEntity carModelEntity);
 	void deleteCarModelEntityById(Long id);
 }

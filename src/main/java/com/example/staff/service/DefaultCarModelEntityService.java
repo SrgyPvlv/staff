@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.staff.entity.CarModelEntity;
-import com.example.staff.exception.EmployeeNotFoundException;
+import com.example.staff.exception.ItemNotFoundException;
 import com.example.staff.repository.CarModelRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class DefaultCarModelEntityService implements  CarModelEntityService{
 	public CarModelEntity getCarModelEntityById(Long id) {
 		CarModelEntity carModelEntity=carModelRepository
 				.findById(id)
-				.orElseThrow(()->new EmployeeNotFoundException("Employee not found: id = " + id));
+				.orElseThrow(()->new ItemNotFoundException("CarModel not found: id = " + id));
 		return carModelEntity;
 	}
 
@@ -31,18 +31,17 @@ public class DefaultCarModelEntityService implements  CarModelEntityService{
 	}
 
 	@Override
-	public void addCarModelEntity(CarModelEntity carModelEntity) {
-		carModelRepository.saveAndFlush(carModelEntity);
-		
+	public CarModelEntity addCarModelEntity(CarModelEntity carModelEntity) {
+		return carModelRepository.saveAndFlush(carModelEntity);
 	}
 
 	@Override
-	public void editCarModelEntity(Long id, CarModelEntity carModelEntity) {
+	public CarModelEntity editCarModelEntity(Long id, CarModelEntity carModelEntity) {
 		CarModelEntity editedCarModelEntity=carModelRepository
 				.findById(id)
-				.orElseThrow(()->new EmployeeNotFoundException("Employee not found: id = " + id));
+				.orElseThrow(()->new ItemNotFoundException("CarModel not found: id = " + id));
 		editedCarModelEntity.setCarModel(carModelEntity.getCarModel());
-		carModelRepository.saveAndFlush(editedCarModelEntity);
+		return carModelRepository.saveAndFlush(editedCarModelEntity);
 	}
 
 	@Override
