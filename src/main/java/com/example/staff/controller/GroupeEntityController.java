@@ -13,50 +13,50 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.staff.entity.PositionEntity;
-import com.example.staff.service.PositionEntityService;
+import com.example.staff.entity.GroupeEntity;
+import com.example.staff.service.GroupeEntityService;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
-public class PositionEntityController {
+public class GroupeEntityController {
 
-	private final PositionEntityService positionEntityService;
+private final GroupeEntityService groupeEntityService;
 	
-	@GetMapping("/positions/{id}")
-	public ResponseEntity<PositionEntity> getPositionEntityById(@PathVariable Long id) {
+	@GetMapping("/groupes/{id}")
+	public ResponseEntity<GroupeEntity> getGroupeEntityById(@PathVariable Long id) {
 		try {
-			return ResponseEntity.ok(positionEntityService.getPositionEntityById(id));
+			return ResponseEntity.ok(groupeEntityService.getGroupeEntityById(id));
 		}catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 	
-	@GetMapping("/positions")
-	public ResponseEntity<List<PositionEntity>> getAllPositionEntity(){
+	@GetMapping("/groupes")
+	public ResponseEntity<List<GroupeEntity>> getAllGroupeEntity(){
 		try {
-			return ResponseEntity.ok(positionEntityService.getAllPositionEntity());
+			return ResponseEntity.ok(groupeEntityService.getAllGroupeEntity());
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 	
-	@PostMapping("/positions")
-	public ResponseEntity<PositionEntity> addPositionEntity(@RequestBody PositionEntity positionEntity){
+	@PostMapping("/groupes")
+	public ResponseEntity<GroupeEntity> addGroupeEntity(@RequestBody GroupeEntity groupeEntity){
 		try {
-			return new ResponseEntity<>(positionEntityService.addPositionEntity(positionEntity),HttpStatus.CREATED);
+			return new ResponseEntity<>(groupeEntityService.addGroupeEntity(groupeEntity),HttpStatus.CREATED);
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
 	}
 	
-	@PutMapping("/positions/{id}")
-	public ResponseEntity<PositionEntity> editPositionEntity(@PathVariable Long id,@RequestBody PositionEntity positionEntity){
+	@PutMapping("/groupes/{id}")
+	public ResponseEntity<GroupeEntity> editGroupeEntity(@PathVariable Long id,@RequestBody GroupeEntity groupeEntity){
 		try {
-			return new ResponseEntity<>(positionEntityService.editPositionEntity(id, positionEntity),HttpStatus.OK);
+			return new ResponseEntity<>(groupeEntityService.editGroupeEntity(id, groupeEntity),HttpStatus.OK);
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
 	}
 	
-	@DeleteMapping("/positions/{id}")
-	public ResponseEntity<HttpStatus> deletePositionEntityById(@PathVariable Long id){
+	@DeleteMapping("/groupes/{id}")
+	public ResponseEntity<HttpStatus> deleteGroupeEntityById(@PathVariable Long id){
 		try {
-			positionEntityService.deletePositionEntityById(id);
+			groupeEntityService.deleteGroupeEntityById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}

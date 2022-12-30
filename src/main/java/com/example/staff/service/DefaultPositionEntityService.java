@@ -31,18 +31,18 @@ public class DefaultPositionEntityService implements PositionEntityService{
 	}
 
 	@Override
-	public void addPositionEntity(PositionEntity positionEntity) {
-		positionRepository.saveAndFlush(positionEntity);	
+	public PositionEntity addPositionEntity(PositionEntity positionEntity) {
+		return positionRepository.saveAndFlush(positionEntity);	
 	}
 
 	@Override
-	public void editPositionEntity(Long id, PositionEntity positionEntity) {
+	public PositionEntity editPositionEntity(Long id, PositionEntity positionEntity) {
 		PositionEntity editedPositionEntity=positionRepository
 				.findById(id)
 				.orElseThrow(()-> new ItemNotFoundException("Position not found: id = "+id));
 		editedPositionEntity.setPosition(positionEntity.getPosition());
 		
-		positionRepository.saveAndFlush(editedPositionEntity);	
+		return positionRepository.saveAndFlush(editedPositionEntity);	
 	}
 
 	@Override

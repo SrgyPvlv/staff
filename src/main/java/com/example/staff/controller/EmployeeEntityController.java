@@ -51,14 +51,14 @@ public class EmployeeEntityController {
 	public ResponseEntity<EmployeeEntity> editEmployeeEntity(@PathVariable Long id, @RequestBody EmployeeEntity employeeEntity){
 		try {
 			return new ResponseEntity<>(employeeEntityService.editEmployeeEntity(id, employeeEntity),HttpStatus.OK);
-		}catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);}
+		}catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
 	}
 	
 	@DeleteMapping("/employees/{id}")
 	public ResponseEntity<HttpStatus> deleteEmployEntityById(@PathVariable Long id){
 		try {
 			employeeEntityService.deleteEmployEntityById(id);
-			return new ResponseEntity<>(HttpStatus.OK);
-		}catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NO_CONTENT);}
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 }

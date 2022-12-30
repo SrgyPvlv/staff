@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
-public class CarModelController {
+public class CarModelEntityController {
 
 	private final CarModelEntityService carModelEntityService;
 	
@@ -50,14 +50,14 @@ public class CarModelController {
 	public ResponseEntity<CarModelEntity> editCarModelEntity(@PathVariable Long id, @RequestBody CarModelEntity carModelEntity){
 		try {
 			return new ResponseEntity<>(carModelEntityService.editCarModelEntity(id, carModelEntity),HttpStatus.OK);
-		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);}
+		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
 	}
 	
 	@DeleteMapping("/carmodels/{id}")
 	public ResponseEntity<HttpStatus> deleteCarModelEntityById(@PathVariable Long id){
 		try {
 			carModelEntityService.deleteCarModelEntityById(id);
-			return new ResponseEntity<>(HttpStatus.OK);
-		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NO_CONTENT);}
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 }

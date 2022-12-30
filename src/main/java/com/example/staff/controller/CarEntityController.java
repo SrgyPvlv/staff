@@ -40,26 +40,24 @@ public class CarEntityController {
 	}
 	
 	@PostMapping("/cars")
-	public ResponseEntity<HttpStatus> addCarEntity(@RequestBody CarEntity carEntity){
+	public ResponseEntity<CarEntity> addCarEntity(@RequestBody CarEntity carEntity){
 		try {
-			carEntityService.addCarEntity(carEntity);
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			return new ResponseEntity<>(carEntityService.addCarEntity(carEntity),HttpStatus.CREATED);
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
 	}
 	
 	@PutMapping("/cars/{id}")
-	public ResponseEntity<HttpStatus> editCarEntity(@PathVariable Long id, @RequestBody CarEntity carEntity){
+	public ResponseEntity<CarEntity> editCarEntity(@PathVariable Long id, @RequestBody CarEntity carEntity){
 		try {
-			carEntityService.editCarEntity(id, carEntity);
-			return new ResponseEntity<>(HttpStatus.OK);
-		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);}
+			return new ResponseEntity<>(carEntityService.editCarEntity(id, carEntity),HttpStatus.OK);
+		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
 	}
 	
 	@DeleteMapping("/cars/{id}")
 	public ResponseEntity<HttpStatus> deleteCarEntityById(@PathVariable Long id){
 		try {
 			carEntityService.deleteCarEntityById(id);
-			return new ResponseEntity<>(HttpStatus.OK);
-		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 }

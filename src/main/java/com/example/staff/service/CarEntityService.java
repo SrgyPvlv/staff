@@ -8,7 +8,7 @@ public interface CarEntityService {
 
 	CarEntity getCarEntityById(Long ig);
 	List<CarEntity> getAllCarEntity();
-	void addCarEntity(CarEntity carEntity);
-	void editCarEntity(Long id, CarEntity carEntity);
+	CarEntity addCarEntity(CarEntity carEntity);
+	CarEntity editCarEntity(Long id, CarEntity carEntity);
 	void deleteCarEntityById(Long id);
 }

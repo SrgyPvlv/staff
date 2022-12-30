@@ -13,50 +13,50 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.staff.entity.PositionEntity;
-import com.example.staff.service.PositionEntityService;
+import com.example.staff.entity.DivisionEntity;
+import com.example.staff.service.DivisionEntityService;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
-public class PositionEntityController {
+public class DivisionEntityController {
 
-	private final PositionEntityService positionEntityService;
+private final DivisionEntityService divisionEntityService;
 	
-	@GetMapping("/positions/{id}")
-	public ResponseEntity<PositionEntity> getPositionEntityById(@PathVariable Long id) {
+	@GetMapping("/divisions/{id}")
+	public ResponseEntity<DivisionEntity> getDivisionEntityById(@PathVariable Long id) {
 		try {
-			return ResponseEntity.ok(positionEntityService.getPositionEntityById(id));
+			return ResponseEntity.ok(divisionEntityService.getDivisionEntityById(id));
 		}catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 	
-	@GetMapping("/positions")
-	public ResponseEntity<List<PositionEntity>> getAllPositionEntity(){
+	@GetMapping("/divisions")
+	public ResponseEntity<List<DivisionEntity>> getAllDivisionEntity(){
 		try {
-			return ResponseEntity.ok(positionEntityService.getAllPositionEntity());
+			return ResponseEntity.ok(divisionEntityService.getAllDivisionEntity());
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 	
-	@PostMapping("/positions")
-	public ResponseEntity<PositionEntity> addPositionEntity(@RequestBody PositionEntity positionEntity){
+	@PostMapping("/divisions")
+	public ResponseEntity<DivisionEntity> addDivisionEntity(@RequestBody DivisionEntity divisionEntity){
 		try {
-			return new ResponseEntity<>(positionEntityService.addPositionEntity(positionEntity),HttpStatus.CREATED);
+			return new ResponseEntity<>(divisionEntityService.addDivisionEntity(divisionEntity),HttpStatus.CREATED);
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
 	}
 	
-	@PutMapping("/positions/{id}")
-	public ResponseEntity<PositionEntity> editPositionEntity(@PathVariable Long id,@RequestBody PositionEntity positionEntity){
+	@PutMapping("/divisions/{id}")
+	public ResponseEntity<DivisionEntity> editDivisionEntity(@PathVariable Long id,@RequestBody DivisionEntity divisionEntity){
 		try {
-			return new ResponseEntity<>(positionEntityService.editPositionEntity(id, positionEntity),HttpStatus.OK);
+			return new ResponseEntity<>(divisionEntityService.editDivisionEntity(id, divisionEntity),HttpStatus.OK);
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);}
 	}
 	
-	@DeleteMapping("/positions/{id}")
-	public ResponseEntity<HttpStatus> deletePositionEntityById(@PathVariable Long id){
+	@DeleteMapping("/divisions/{id}")
+	public ResponseEntity<HttpStatus> deleteDivisionEntityById(@PathVariable Long id){
 		try {
-			positionEntityService.deletePositionEntityById(id);
+			divisionEntityService.deleteDivisionEntityById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}

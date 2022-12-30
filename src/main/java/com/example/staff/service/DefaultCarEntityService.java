@@ -31,13 +31,13 @@ public class DefaultCarEntityService implements CarEntityService {
 	}
 
 	@Override
-	public void addCarEntity(CarEntity carEntity) {
-		carRepository.saveAndFlush(carEntity);
+	public CarEntity addCarEntity(CarEntity carEntity) {
+		return carRepository.saveAndFlush(carEntity);
 		
 	}
 
 	@Override
-	public void editCarEntity(Long id, CarEntity carEntity) {
+	public CarEntity editCarEntity(Long id, CarEntity carEntity) {
 		CarEntity editedCarEntity=carRepository
 				.findById(id)
 				.orElseThrow(()-> new ItemNotFoundException("Car not found: id = " + id));
@@ -45,7 +45,7 @@ public class DefaultCarEntityService implements CarEntityService {
 		editedCarEntity.setCarComment(carEntity.getCarComment());
 		editedCarEntity.setCarModel(carEntity.getCarModel());
 		
-		carRepository.saveAndFlush(editedCarEntity);
+		return carRepository.saveAndFlush(editedCarEntity);
 	}
 
 	@Override

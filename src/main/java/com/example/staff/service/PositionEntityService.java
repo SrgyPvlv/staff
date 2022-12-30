@@ -8,8 +8,8 @@ public interface PositionEntityService {
 
 	PositionEntity getPositionEntityById(Long id);
 	List<PositionEntity> getAllPositionEntity();
-	void addPositionEntity(PositionEntity positionEntity);
-	void editPositionEntity(Long id,PositionEntity positionEntity);
+	PositionEntity addPositionEntity(PositionEntity positionEntity);
+	PositionEntity editPositionEntity(Long id,PositionEntity positionEntity);
 	void deletePositionEntityById(Long id);
 	
 }
