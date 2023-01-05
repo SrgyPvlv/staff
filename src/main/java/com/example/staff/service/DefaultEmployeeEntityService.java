@@ -1,20 +1,20 @@
 package com.example.staff.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
 import com.example.staff.entity.EmployeeEntity;
 import com.example.staff.exception.ItemNotFoundException;
 import com.example.staff.repository.EmployeeRepository;
-
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class DefaultEmployeeEntityService implements EmployeeEntityService {
 	private final EmployeeRepository employeeRepository;
-	
 	@Override
 	public EmployeeEntity getEmployeeEntityById(Long id) {	
 		EmployeeEntity employee=employeeRepository
@@ -60,6 +60,18 @@ public class DefaultEmployeeEntityService implements EmployeeEntityService {
 	public void deleteEmployEntityById(Long id) {
 		employeeRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<EmployeeEntity> findByNameMobilePositionContaining(String filter) {
+				
+		List<EmployeeEntity> byName=employeeRepository.findByNameIgnoreCaseContaining(filter);
+		List<EmployeeEntity> byMobile=employeeRepository.findByMobilePhoneContaining(filter);
+		List<EmployeeEntity> byPosition=employeeRepository.findByPositionPositionIgnoreCaseContaining(filter);
+		List<EmployeeEntity> byNameMobilePosition=new ArrayList<>();
+		Stream.of(byName,byMobile,byPosition).forEach(byNameMobilePosition::addAll);
+		
+		return byNameMobilePosition;
 	}
 
 }

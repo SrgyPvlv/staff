@@ -11,4 +11,5 @@ public interface EmployeeEntityService {
 	EmployeeEntity addEmployeeEntity(EmployeeEntity employeeEntity);
 	EmployeeEntity editEmployeeEntity(Long id, EmployeeEntity employeeEntity);
 	void deleteEmployEntityById(Long id);
+	List<EmployeeEntity> findByNameMobilePositionContaining(String filter);
 }

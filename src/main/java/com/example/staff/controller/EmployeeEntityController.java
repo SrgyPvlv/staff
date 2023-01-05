@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.staff.entity.EmployeeEntity;
@@ -33,12 +34,24 @@ public class EmployeeEntityController {
 		}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 	
-	@GetMapping("/employees")
+	/*@GetMapping("/employees")
 	public ResponseEntity<List<EmployeeEntity>> getAllEmployee(){
 		
 		try {
 		return new ResponseEntity<>(employeeEntityService.getAllEmployeeEntity(),HttpStatus.OK);
 		} catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+	}*/
+	
+	@GetMapping("/employees")
+	public ResponseEntity<List<EmployeeEntity>> findByNameIgnoreCaseContaining(@RequestParam(required=false) String filter){
+		if(filter != null) {
+			try {return new ResponseEntity<>(employeeEntityService.findByNameMobilePositionContaining(filter),HttpStatus.OK);
+			}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+		}else {
+			try {
+				return new ResponseEntity<>(employeeEntityService.getAllEmployeeEntity(),HttpStatus.OK);
+				} catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}			
+		}
 	}
 	
 	@PostMapping("/employees")

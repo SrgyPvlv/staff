@@ -10,6 +10,5 @@ public interface PositionEntityService {
 	List<PositionEntity> getAllPositionEntity();
 	PositionEntity addPositionEntity(PositionEntity positionEntity);
 	PositionEntity editPositionEntity(Long id,PositionEntity positionEntity);
-	void deletePositionEntityById(Long id);
-	
+	void deletePositionEntityById(Long id);	
 }

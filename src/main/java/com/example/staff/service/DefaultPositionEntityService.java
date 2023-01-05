@@ -50,5 +50,4 @@ public class DefaultPositionEntityService implements PositionEntityService{
 		positionRepository.deleteById(id);
 		
 	}
-
 }
