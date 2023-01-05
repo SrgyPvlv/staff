@@ -11,4 +11,5 @@ public interface CarEntityService {
 	CarEntity addCarEntity(CarEntity carEntity);
 	CarEntity editCarEntity(Long id, CarEntity carEntity);
 	void deleteCarEntityById(Long id);
+	List<CarEntity> findByNumberModel(String filter);
 }

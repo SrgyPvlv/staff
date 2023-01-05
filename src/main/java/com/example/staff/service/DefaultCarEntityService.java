@@ -1,6 +1,8 @@
 package com.example.staff.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
@@ -52,6 +54,16 @@ public class DefaultCarEntityService implements CarEntityService {
 	public void deleteCarEntityById(Long id) {
 		carRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<CarEntity> findByNumberModel(String filter) {
+		List<CarEntity> byNumber=carRepository.findByCarNumberIgnoreCaseContaining(filter);
+		List<CarEntity> byModel=carRepository.findByCarModelCarModelIgnoreCaseContaining(filter);
+		List<CarEntity> byNumberModel=new ArrayList<>();
+		
+		Stream.of(byNumber,byModel).forEach(byNumberModel::addAll);
+		return byNumberModel;
 	}
 
 	

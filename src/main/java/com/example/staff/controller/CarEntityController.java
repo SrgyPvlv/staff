@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.staff.entity.CarEntity;
@@ -34,11 +35,24 @@ public class CarEntityController {
 		} catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 	
-	@GetMapping("/cars")
+	/*@GetMapping("/cars")
 	public ResponseEntity<List<CarEntity>> getAllCarEntity(){
 		try {
 			return ResponseEntity.ok(carEntityService.getAllCarEntity());
 		} catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+	}*/
+	
+	@GetMapping("/cars")
+	public ResponseEntity<List<CarEntity>> findByNumberModel(@RequestParam(required=false) String filter){
+		if(filter!=null && !filter.isBlank()) {
+			try {
+				return ResponseEntity.ok(carEntityService.findByNumberModel(filter));
+			} catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+		}else {
+			try {
+				return ResponseEntity.ok(carEntityService.getAllCarEntity());
+			} catch (Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+		}
 	}
 	
 	@PostMapping("/cars")

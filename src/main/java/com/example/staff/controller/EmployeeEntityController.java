@@ -43,8 +43,8 @@ public class EmployeeEntityController {
 	}*/
 	
 	@GetMapping("/employees")
-	public ResponseEntity<List<EmployeeEntity>> findByNameIgnoreCaseContaining(@RequestParam(required=false) String filter){
-		if(filter != null) {
+	public ResponseEntity<List<EmployeeEntity>> findByNameMobilePosition(@RequestParam(required=false) String filter){
+		if(filter != null && !filter.isBlank()) {
 			try {return new ResponseEntity<>(employeeEntityService.findByNameMobilePositionContaining(filter),HttpStatus.OK);
 			}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 		}else {
