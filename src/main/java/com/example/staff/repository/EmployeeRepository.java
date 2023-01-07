@@ -9,10 +9,10 @@ import com.example.staff.entity.EmployeeEntity;
 
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity,Long> {
 	
-	List<EmployeeEntity> findByNameIgnoreCaseContaining(@Param("filter") String filter);
+	List<EmployeeEntity> findByNameIgnoreCaseContainingOrderByNameAsc(@Param("filter") String filter);
 	
-	List<EmployeeEntity> findByMobilePhoneContaining(@Param("filter") String filter);
+	List<EmployeeEntity> findByMobilePhoneContainingOrderByNameAsc(@Param("filter") String filter);
 	
-	List<EmployeeEntity> findByPositionPositionIgnoreCaseContaining(@Param("filter") String filter);
+	List<EmployeeEntity> findByPositionPositionIgnoreCaseContainingOrderByNameAsc(@Param("filter") String filter);
 	
 }

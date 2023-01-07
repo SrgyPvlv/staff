@@ -7,7 +7,7 @@ import com.example.staff.entity.CarEntity;
 
 public interface CarRepository extends JpaRepository<CarEntity,Long> {
 
-	List<CarEntity> findByCarNumberIgnoreCaseContaining(String filter);
+	List<CarEntity> findByCarNumberIgnoreCaseContainingOrderByCarNumber(String filter);
 	
-	List<CarEntity> findByCarModelCarModelIgnoreCaseContaining(String filter);
+	List<CarEntity> findByCarModelCarModelIgnoreCaseContainingOrderByCarNumber(String filter);
 }
