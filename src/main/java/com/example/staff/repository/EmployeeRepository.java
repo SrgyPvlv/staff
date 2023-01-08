@@ -15,4 +15,8 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity,Long> {
 	
 	List<EmployeeEntity> findByPositionPositionIgnoreCaseContainingOrderByNameAsc(@Param("filter") String filter);
 	
+	List<EmployeeEntity> findByFactDepartmentGroupeGroupeOrFactDepartmentFunctionGroupFunctionGroupOrderByNameAsc(@Param("filter1") String filter1,@Param("filter2") String filter2);
+	
+	List<EmployeeEntity> findByStaffDepartmentGroupeGroupeOrStaffDepartmentFunctionGroupFunctionGroupOrderByNameAsc(@Param("filter1") String filter1,@Param("filter2") String filter2);
+	
 }

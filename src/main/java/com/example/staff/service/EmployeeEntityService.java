@@ -12,4 +12,6 @@ public interface EmployeeEntityService {
 	EmployeeEntity editEmployeeEntity(Long id, EmployeeEntity employeeEntity);
 	void deleteEmployEntityById(Long id);
 	List<EmployeeEntity> findByNameMobilePositionContaining(String filter);
+	List<EmployeeEntity> findByFactGroupeOrFunctionGroupOrderByNameAsc(String filter1,String filter2);
+	List<EmployeeEntity> findByStaffGroupeOrFunctionGroupOrderByNameAsc(String filter1,String filter2);
 }

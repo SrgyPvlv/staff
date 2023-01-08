@@ -75,4 +75,16 @@ public class DefaultEmployeeEntityService implements EmployeeEntityService {
 		return byNameMobilePosition;
 	}
 
+	@Override
+	public List<EmployeeEntity> findByFactGroupeOrFunctionGroupOrderByNameAsc(String filter1, String filter2) {
+		 
+		return employeeRepository.findByFactDepartmentGroupeGroupeOrFactDepartmentFunctionGroupFunctionGroupOrderByNameAsc(filter1, filter2);
+	}
+
+	@Override
+	public List<EmployeeEntity> findByStaffGroupeOrFunctionGroupOrderByNameAsc(String filter1, String filter2) {
+		
+		return employeeRepository.findByStaffDepartmentGroupeGroupeOrStaffDepartmentFunctionGroupFunctionGroupOrderByNameAsc(filter1, filter2);
+	}
+
 }

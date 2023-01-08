@@ -54,6 +54,24 @@ public class EmployeeEntityController {
 		}
 	}
 	
+	@GetMapping("/employees/factdepartment")
+	public ResponseEntity<List<EmployeeEntity>> findByGroupeOrFunctionGroupOrderByNameAsc(@RequestParam(required=false) String filter){
+		
+			String filter1=filter;
+			String filter2=filter;
+			try {return new ResponseEntity<>(employeeEntityService.findByFactGroupeOrFunctionGroupOrderByNameAsc(filter1, filter2),HttpStatus.OK);
+			}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+	}
+	
+	@GetMapping("/employees/staffdepartment")
+	public ResponseEntity<List<EmployeeEntity>> findByStaffGroupeOrFunctionGroupOrderByNameAsc(@RequestParam(required=false) String filter){
+		
+			String filter1=filter;
+			String filter2=filter;
+			try {return new ResponseEntity<>(employeeEntityService.findByStaffGroupeOrFunctionGroupOrderByNameAsc(filter1, filter2),HttpStatus.OK);
+			}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+	}
+	
 	@PostMapping("/employees")
 	public ResponseEntity<EmployeeEntity> addEmployeeEntity(@RequestBody EmployeeEntity employeeEntity){
 		try {
