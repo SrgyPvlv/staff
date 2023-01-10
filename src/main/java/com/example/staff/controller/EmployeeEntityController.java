@@ -59,7 +59,8 @@ public class EmployeeEntityController {
 		
 			String filter1=filter;
 			String filter2=filter;
-			try {return new ResponseEntity<>(employeeEntityService.findByFactGroupeOrFunctionGroupOrderByNameAsc(filter1, filter2),HttpStatus.OK);
+			String filter3=filter;
+			try {return new ResponseEntity<>(employeeEntityService.findByFactDivisionOrGroupeOrFunctionGroupOrderByNameAsc(filter1,filter2,filter3),HttpStatus.OK);
 			}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 	
@@ -68,7 +69,8 @@ public class EmployeeEntityController {
 		
 			String filter1=filter;
 			String filter2=filter;
-			try {return new ResponseEntity<>(employeeEntityService.findByStaffGroupeOrFunctionGroupOrderByNameAsc(filter1, filter2),HttpStatus.OK);
+			String filter3=filter;
+			try {return new ResponseEntity<>(employeeEntityService.findByStaffDivisionOrGroupeOrFunctionGroupOrderByNameAsc(filter1,filter2,filter3),HttpStatus.OK);
 			}catch(Exception ex) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
 	}
 	
