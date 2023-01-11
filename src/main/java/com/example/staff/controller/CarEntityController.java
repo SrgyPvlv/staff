@@ -14,14 +14,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.example.staff.entity.CarEntity;
 import com.example.staff.service.CarEntityService;
 
 import lombok.RequiredArgsConstructor;
 
-@CrossOrigin(origins="http://localhost:5173/")
+@CrossOrigin(origins="http://localhost:8084/")
 @RestController
+@SessionScope
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
 public class CarEntityController {
